@@ -1,0 +1,17 @@
+name: Phone availability checker
+on:
+  schedule:
+    - cron: '*/20 * * * *'
+  pull_request: {}
+jobs:
+  checker:
+    name: Availability Checker
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip3 install requests twilio
+      - run: python3 ./pf.py
+        env:
+          TWILIO_SID: ${{ vars.TWILIO_SID }}
+          TWILIO_API_KEY: ${{ secrets.TWILIO_API_KEY }}
+          RECIPIENT_NUMBER: ${{ secrets.RECIPIENT_NUMBER }}
+          SENDER_NUMBER: ${{ vars.SENDER_NUMBER }}
