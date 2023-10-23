@@ -23,7 +23,7 @@ client = Client(account_sid, auth_token)
 
 event_name = os.getenv("GITHUB_EVENT_NAME")
 
-if not in_stock:
+if in_stock:
     # message = client.messages.create(
     #     to=recipient,
     #     from_=sender,
