@@ -24,19 +24,19 @@ client = Client(account_sid, auth_token)
 event_name = os.getenv("GITHUB_EVENT_NAME")
 
 if in_stock:
-    # message = client.messages.create(
-    #     to=recipient,
-    #     from_=sender,
-    #     body="iPhone 13 mini 512GB - Starlight is available!")
-    # print(message.sid)
+    message = client.messages.create(
+        to=recipient,
+        from_=sender,
+        body="iPhone 13 mini 512GB - Starlight is available!")
+    print(message.sid)
     print("In stock!")
-    exit(2)
+    # exit(2)
 elif event_name == "pull_request" or event_name == 'workflow_dispatch':
-    # message = client.messages.create(
-    #     to=recipient,
-    #     from_=sender,
-    #     body="iPhone 13 mini 512GB - Starlight is not available :(")
-    # print(message.sid)
-    print("Not in stock")
+    message = client.messages.create(
+        to=recipient,
+        from_=sender,
+        body="iPhone 13 mini 512GB - Starlight is available!")
+    print(message.sid)
+    print("This is a test")
 else:
     print("Not in stock")
